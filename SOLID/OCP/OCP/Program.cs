@@ -16,12 +16,14 @@ namespace OCP {
             List<EmployeeModel> employees = new List<EmployeeModel>();
             Accounts accountProcessor = new Accounts();
 
+            int i = 0;
             foreach (var person in applicants) {
-                employees.Add(accountProcessor.Create(person));
+                employees.Add(accountProcessor.Create(person, i));
+                i++;
             }
 
             foreach (var emp in employees) {
-                Console.WriteLine($"{ emp.FirstName } { emp.LastName }: { emp.EmailAddress } IsManager: { emp.IsManager } IsExecutive: { emp.IsExecutive }");
+                Console.WriteLine($"{ emp.FirstName } { emp.LastName }: { emp.EmailAddress } , Employee Type: { emp.GetType() }");
             }
 
             Console.ReadLine();
